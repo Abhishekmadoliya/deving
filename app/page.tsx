@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
-import { Navbar } from "@/components";
 import PromptChips from "@/components/home/PromptChips";
 import PromptInput from "@/components/home/PromptInput";
 
@@ -40,7 +39,7 @@ export default function HomePage() {
         color: "#ededed",
       }}
     >
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div
         style={{

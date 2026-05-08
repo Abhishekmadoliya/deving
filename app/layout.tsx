@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { cookies } from 'next/headers';
+import { verifyJWT } from "@/lib/verifyJwt";
+import { Navbar } from "@/components";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,17 +28,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value;
+  let user = null;
+
+  try {
+    user = token ? verifyJWT(token as string) : null;
+  } catch {
+    user = null;
+  }
+
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-[#ededed]">
+        <Navbar user={user} />
         {children}
       </body>
     </html>

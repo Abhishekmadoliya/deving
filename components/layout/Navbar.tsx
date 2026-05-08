@@ -1,6 +1,7 @@
 "use client";
 
 import { FileText, MessageCircle, MoreHorizontal, Gem } from "lucide-react";
+import Link from "next/link";
 
 /** Inline X (Twitter) logo — lucide-react doesn't export one */
 function XIcon() {
@@ -11,7 +12,7 @@ function XIcon() {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ user }: { user: any }) {
   return (
     <nav
       style={{
@@ -55,149 +56,175 @@ export default function Navbar() {
       </div>
 
       {/* Right — actions */}
-      <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-        {/* Docs */}
-        <button
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            padding: "6px 12px",
-            borderRadius: 8,
-            border: "none",
-            backgroundColor: "transparent",
-            color: "#888",
-            fontSize: 13,
-            fontWeight: 500,
-            cursor: "pointer",
-            transition: "color 0.15s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
-        >
-          <FileText style={{ width: 15, height: 15 }} />
-          Docs
-        </button>
-
-        {/* Chat bubble */}
-        <button
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 8,
-            border: "none",
-            backgroundColor: "transparent",
-            color: "#888",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "color 0.15s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
-        >
-          <MessageCircle style={{ width: 17, height: 17 }} />
-        </button>
-
-        {/* X / Twitter */}
-        <button
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 8,
-            border: "none",
-            backgroundColor: "transparent",
-            color: "#888",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "color 0.15s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
-        >
-          <XIcon />
-        </button>
-
-        {/* Gems / colorful icon */}
-        <button
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 8,
-            border: "none",
-            backgroundColor: "transparent",
-            color: "#a78bfa",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "color 0.15s",
-            position: "relative",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#c4b5fd")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#a78bfa")}
-        >
-          <Gem style={{ width: 17, height: 17 }} />
-          {/* notification dot */}
-          <span
+      {user ? (
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          {/* Docs */}
+          <button
             style={{
-              position: "absolute",
-              top: 6,
-              right: 6,
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              backgroundColor: "#6366f1",
-              border: "1px solid #0a0a0a",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "6px 12px",
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#888",
+              fontSize: 13,
+              fontWeight: 500,
+              cursor: "pointer",
+              transition: "color 0.15s",
             }}
-          />
-        </button>
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
+          >
+            <FileText style={{ width: 15, height: 15 }} />
+            Docs
+          </button>
 
-        {/* Three-dot menu */}
-        <button
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: 8,
-            border: "none",
-            backgroundColor: "transparent",
-            color: "#888",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "color 0.15s",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
-        >
-          <MoreHorizontal style={{ width: 18, height: 18 }} />
-        </button>
+          {/* Chat bubble */}
+          <button
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#888",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "color 0.15s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
+          >
+            <MessageCircle style={{ width: 17, height: 17 }} />
+          </button>
 
-        {/* Avatar */}
-        <div
-          style={{
-            width: 32,
-            height: 32,
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #ef4444 0%, #f97316 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 13,
-            fontWeight: 700,
-            color: "#fff",
-            cursor: "pointer",
-            marginLeft: 4,
-            flexShrink: 0,
-          }}
-        >
-          A
+          {/* X / Twitter */}
+          <button
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#888",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "color 0.15s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
+          >
+            <XIcon />
+          </button>
+
+          {/* Gems / colorful icon */}
+          <button
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#a78bfa",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "color 0.15s",
+              position: "relative",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#c4b5fd")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#a78bfa")}
+          >
+            <Gem style={{ width: 17, height: 17 }} />
+            {/* notification dot */}
+            <span
+              style={{
+                position: "absolute",
+                top: 6,
+                right: 6,
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                backgroundColor: "#6366f1",
+                border: "1px solid #0a0a0a",
+              }}
+            />
+          </button>
+
+          {/* Three-dot menu */}
+          <button
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#888",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              transition: "color 0.15s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
+          >
+            <MoreHorizontal style={{ width: 18, height: 18 }} />
+          </button>
+
+          {/* Avatar */}
+          <div
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: "50%",
+              background: "linear-gradient(135deg, #ef4444 0%, #f97316 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 13,
+              fontWeight: 700,
+              color: "#fff",
+              cursor: "pointer",
+              marginLeft: 4,
+              flexShrink: 0,
+            }}
+          >
+            {user?.email?.charAt(0).toUpperCase()}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <Link
+            href="/get-started"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "6px 16px",
+              borderRadius: 100,
+              border: "none",
+              backgroundColor: "#fff",
+              color: "#000",
+              fontSize: 13,
+              fontWeight: 600,
+              cursor: "pointer",
+              transition: "opacity 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            Try now
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }
