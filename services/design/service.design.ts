@@ -1,0 +1,41 @@
+
+
+/**
+ * design service to handle all the api calls related to design creaion and setup
+ * such as 
+ * - unique id session creation 
+ * - design creation
+ * - design setup
+ * 
+ */
+
+
+
+import api from "@/lib/axios";
+
+/**
+ * @returns 
+ */
+export async function createUniqueSession(designPrompt: string) {
+    try {
+        const res = await api.post(`/api/design/create-session`, {
+            designPrompt
+        });
+        return res.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+/**
+ * @returns 
+ */
+export async function designCreation() {
+    try {
+        const res = await api.post("design/create-session");
+        return res.data;
+    } catch (error) {
+        throw error;
+    }
+}

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 import PromptChips from "@/components/home/PromptChips";
 import PromptInput from "@/components/home/PromptInput";
+import { createUniqueSession } from "@/services/design/service.design";
 
 const EXAMPLE_PROMPTS = [
   "A mobile fitness tracking app",
@@ -20,13 +21,23 @@ export default function HomePage() {
   const [mode, setMode] = useState<"standard" | "experimental">("standard");
   const [designType, setDesignType] = useState<"web" | "app">("web");
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     if (!prompt.trim()) return;
-    const params = new URLSearchParams({
-      prompt: prompt.trim(),
-      mode,
-    });
-    router.push(`/studio?${params.toString()}`);
+    // const params = new URLSearchParams({
+    //   prompt: prompt.trim(),
+    //   mode,
+    // });
+    const res = await createUniqueSession(prompt.trim())
+    if (res?.status == 201) {
+      router.push(`/studio/${res?.data}`);
+    }
+    else {
+      // toast.error(res?.message || "Something went wrong")
+    }
+    // showToast(res?.message || "Something went wrong", {
+    //   type: "error",
+    //   position: "bottom-right",
+    // });
   };
 
   return (

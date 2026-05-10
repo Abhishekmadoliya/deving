@@ -44,6 +44,11 @@ export default async function RootLayout({
     user = null;
   }
 
+  // console.log("user", user);
+  // if (user == null) {
+
+  // }
+
 
   return (
     <html
