@@ -39,3 +39,15 @@ export async function designCreation() {
         throw error;
     }
 }
+
+
+
+export async function getDesignSession(sessionId: string) {
+    try {
+        const res = await api.get(`/api/design/${sessionId}`);
+        return res.data.data;
+    } catch (error: any) {
+        console.log("Error in getting design session", error?.response?.data?.message);
+        throw error;
+    }
+}

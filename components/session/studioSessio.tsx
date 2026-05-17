@@ -7,7 +7,7 @@ import { StudioToolbar } from "@/components/studio/Toolbar";
 import { ChatPanel } from "@/components/studio/ChatPanel";
 import { DesignCanvas } from "@/components/studio/DesignCanvas";
 
-function StudioContent() {
+function StudioContent({ session }: { session: any }) {
     const searchParams = useSearchParams();
     const hasTriggered = useRef(false);
     const {
@@ -109,7 +109,7 @@ function StudioContent() {
     );
 }
 
-export default function StudioSession() {
+export default function StudioSession({ session }: { session: any }) {
     return (
         <Suspense
             fallback={
@@ -138,7 +138,7 @@ export default function StudioSession() {
                 </div>
             }
         >
-            <StudioContent />
+            <StudioContent session={session} />
         </Suspense>
     );
 }
