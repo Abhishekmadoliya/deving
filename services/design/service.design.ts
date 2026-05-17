@@ -12,6 +12,7 @@
 
 
 import api from "@/lib/axios";
+import { toast } from "sonner";
 
 /**
  * @returns 
@@ -21,9 +22,14 @@ export async function createUniqueSession(designPrompt: string) {
         const res = await api.post(`/api/design/create-session`, {
             designPrompt
         });
+        if (res.status !== 200) {
+            // toast.error(res?.data?.message || "Something went wrong")
+            return null;
+        }
         return res.data;
-    } catch (error) {
-        throw error;
+    } catch (error: any) {
+        // toast.error(error?.response?.data?.message || "Something went wrong")
+        return null;
     }
 }
 

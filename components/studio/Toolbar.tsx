@@ -95,7 +95,7 @@ export function StudioToolbar() {
               ? currentPrompt.length > 40
                 ? currentPrompt.substring(0, 40) + "..."
                 : currentPrompt
-              : "Stitch"}
+              : "Sketchloop"}
           </span>
         </div>
       </div>

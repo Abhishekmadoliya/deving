@@ -4,6 +4,8 @@ import "./globals.css";
 import { cookies } from 'next/headers';
 import { verifyJWT } from "@/lib/verifyJwt";
 import { Navbar } from "@/components";
+import createUserContext from "@/features/auth/authenticateUser";
+import { Toaster } from "sonner";
 
 
 const geistSans = Geist({
@@ -17,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stitch — AI UI Design Tool",
+  title: "Sketchloop — AI UI Design Tool",
   description:
-    "Design anything. Just describe it. AI-powered UI generation from natural language, powered by Claude AI.",
+    "Design anything. Just describe it. AI-powered UI generation from natural language, powered by AI.",
   keywords: ["AI", "UI design", "design tool", "generative AI", "Claude"],
   openGraph: {
     title: "Stitch — AI UI Design Tool",
@@ -40,14 +42,13 @@ export default async function RootLayout({
 
   try {
     user = token ? verifyJWT(token as string) : null;
+
+    // const { authUser, isAuthenticated } = createUserContext(user);
+
+    // console.log(user, isAuthenticated);
   } catch {
     user = null;
   }
-
-  // console.log("user", user);
-  // if (user == null) {
-
-  // }
 
 
   return (
@@ -58,6 +59,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-[#ededed]">
         <Navbar user={user} />
         {children}
+        <Toaster position="top-center" richColors theme="dark" />
       </body>
     </html>
   );

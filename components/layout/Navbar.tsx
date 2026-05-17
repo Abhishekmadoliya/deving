@@ -38,7 +38,7 @@ export default function Navbar({ user }: { user: any }) {
             letterSpacing: "-0.02em",
           }}
         >
-          Stitch
+          Sketchloop
         </span>
         <span
           style={{

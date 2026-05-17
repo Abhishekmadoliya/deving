@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import PromptChips from "@/components/home/PromptChips";
 import PromptInput from "@/components/home/PromptInput";
 import { createUniqueSession } from "@/services/design/service.design";
+import { toast } from "sonner";
 
 const EXAMPLE_PROMPTS = [
   "A mobile fitness tracking app",
@@ -32,7 +33,7 @@ export default function HomePage() {
       router.push(`/studio/${res?.data}`);
     }
     else {
-      // toast.error(res?.message || "Something went wrong")
+      toast.info(res?.message || "Something went wrong")
     }
     // showToast(res?.message || "Something went wrong", {
     //   type: "error",
@@ -142,7 +143,7 @@ export default function HomePage() {
               }}
             />
             <span style={{ fontSize: 13, color: "#444" }}>
-              Powered by Claude AI
+              AI Design Tool by Sketchloop
             </span>
           </motion.div>
         </div>
