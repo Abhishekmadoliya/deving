@@ -1,0 +1,789 @@
+/* =============================================
+   STITCH UI — Google Stitch-inspired Studio
+   ============================================= */
+
+/* ---------- TOOLBAR ---------- */
+.stitch-toolbar {
+  height: 52px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 0 8px;
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.stitch-toolbar__left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stitch-toolbar__icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.stitch-toolbar__icon-btn:hover {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.stitch-toolbar__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e0e0;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.stitch-toolbar__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stitch-toolbar__action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.stitch-toolbar__action-btn:hover {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #fff;
+}
+
+.stitch-toolbar__play-btn {
+  background-color: #222;
+  border-color: #333;
+  padding: 7px 10px;
+}
+
+.stitch-toolbar__play-btn:hover {
+  background-color: #333;
+}
+
+.stitch-toolbar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e67e22, #f39c12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: transform 0.15s;
+}
+
+.stitch-toolbar__avatar:hover {
+  transform: scale(1.08);
+}
+
+.stitch-toolbar__dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 6px;
+  width: 200px;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  z-index: 50;
+}
+
+.stitch-toolbar__dropdown-item {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background-color: transparent;
+  color: #ccc;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: inherit;
+  transition: background-color 0.1s;
+}
+
+.stitch-toolbar__dropdown-item:hover {
+  background-color: #2a2a2a;
+}
+
+/* ---------- LEFT SIDEBAR ---------- */
+.stitch-sidebar {
+  background-color: #141414;
+  /* border-right: 1px solid #222; */
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 15;
+}
+
+.stitch-sidebar__header {
+  padding: 14px 16px;
+  flex-shrink: 0;
+}
+
+.stitch-sidebar__chat-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.stitch-sidebar__messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stitch-sidebar__entry {
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background-color 0.15s;
+}
+
+.stitch-sidebar__entry:hover {
+  background-color: #1e1e1e;
+}
+
+.stitch-sidebar__entry-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stitch-sidebar__entry-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stitch-sidebar__entry-avatar--user {
+  background: linear-gradient(135deg, #e67e22, #f39c12);
+  color: #fff;
+}
+
+.stitch-sidebar__entry-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  min-width: 0;
+}
+
+.stitch-sidebar__entry-label {
+  font-size: 12px;
+  color: #bbb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.stitch-sidebar__entry-text {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.55;
+  margin: 0;
+  padding-left: 32px;
+}
+
+.stitch-sidebar__loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 32px;
+}
+
+.stitch-sidebar__loading-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.stitch-sidebar__loading-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #6366f1;
+  animation: stitch-bounce 1s ease-in-out infinite;
+}
+
+/* ---------- CANVAS MESH ---------- */
+.stitch-canvas {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #141414;
+}
+
+.stitch-canvas__mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #2a2a2a 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.5;
+}
+
+.stitch-canvas__card {
+  border-radius: 14px;
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s ease, border-color 0.2s ease;
+  animation: stitch-card-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.stitch-canvas__card:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #444;
+  z-index: 20 !important;
+}
+
+.stitch-canvas__card--selected {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3),
+    0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.stitch-canvas__card-header {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #262626;
+  background-color: #1a1a1a;
+}
+
+.stitch-canvas__card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stitch-canvas__card-header-left span {
+  font-size: 11px;
+  font-weight: 500;
+  color: #999;
+}
+
+.stitch-canvas__card-body {
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+}
+
+.stitch-canvas__card-body--image {
+  height: auto;
+  max-height: 280px;
+}
+
+/* Next.js Image inside cards */
+.stitch-canvas__card-img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+/* Overlay image */
+.stitch-canvas__overlay-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Skeleton Loading Card ─── */
+.stitch-canvas__card--skeleton {
+  cursor: default;
+  animation: stitch-card-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stitch-canvas__card--skeleton:hover {
+  transform: none !important;
+}
+
+.stitch-canvas__card-body--skeleton {
+  height: 200px;
+  background-color: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.stitch-skeleton__text {
+  display: inline-block;
+  height: 10px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #222 25%, #2e2e2e 50%, #222 75%);
+  background-size: 200% 100%;
+  animation: stitch-shimmer 1.5s ease-in-out infinite;
+}
+
+.stitch-skeleton__shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: stitch-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes stitch-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.stitch-canvas__card-expand {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.stitch-canvas__card-expand:hover {
+  background-color: #444;
+}
+
+/* Expanded overlay */
+.stitch-canvas__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: stitch-fade-in 0.2s ease;
+}
+
+.stitch-canvas__overlay-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.stitch-canvas__overlay-close:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.stitch-canvas__overlay-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes stitch-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Empty state */
+.stitch-canvas__empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 5;
+}
+
+.stitch-canvas__empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background-color: #1a1a1a;
+  border: 1px solid #262626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.stitch-canvas__empty-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.stitch-canvas__empty-sub {
+  font-size: 13px;
+  color: #444;
+  max-width: 300px;
+}
+
+/* Generating state */
+.stitch-canvas__generating {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 5;
+}
+
+.stitch-canvas__generating span {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+.stitch-canvas__generating-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #2a2a2a;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: stitch-spin 0.8s linear infinite;
+}
+
+/* ---------- INPUT BAR ---------- */
+.stitch-input {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 30;
+  padding: 0 20px;
+}
+
+.stitch-input__chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stitch-input__chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid #2a2a2a;
+  background-color: #1e1e1e;
+  color: #999;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.stitch-input__chip:hover {
+  border-color: #444;
+  color: #ccc;
+  background-color: #242424;
+}
+
+.stitch-input__chip-number {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+}
+
+.stitch-input__container {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+  background-color: #1e1e1e;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.stitch-input__container:focus-within {
+  border-color: #444;
+}
+
+.stitch-input__textarea {
+  width: 100%;
+  padding: 16px 18px 8px;
+  font-size: 14px;
+  color: #e0e0e0;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.stitch-input__textarea::placeholder {
+  color: #555;
+}
+
+.stitch-input__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px 10px;
+}
+
+.stitch-input__actions-left {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.stitch-input__actions-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stitch-input__action-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.stitch-input__action-icon:hover {
+  color: #aaa;
+  background-color: #2a2a2a;
+}
+
+.stitch-input__model-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #252525;
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s;
+}
+
+.stitch-input__model-btn:hover {
+  background-color: #333;
+}
+
+.stitch-input__submit {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  transition: all 0.15s;
+}
+
+.stitch-input__submit--active {
+  background-color: #6366f1;
+  color: #fff;
+  cursor: pointer;
+}
+
+.stitch-input__submit--active:hover {
+  background-color: #818cf8;
+}
+
+/* ---------- TOOL RAIL ---------- */
+.stitch-toolrail {
+  width: 48px;
+  min-width: 48px;
+  background-color: #141414;
+  border-left: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  gap: 4px;
+  flex-shrink: 0;
+  z-index: 15;
+}
+
+.stitch-toolrail__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.stitch-toolrail__btn:hover {
+  background-color: #222;
+  color: #ccc;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.stitch-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #141414;
+  overflow: hidden;
+}
+
+.stitch-layout__body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.stitch-layout__center {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes stitch-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stitch-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stitch-bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes stitch-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
